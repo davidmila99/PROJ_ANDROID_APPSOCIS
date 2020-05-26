@@ -14,8 +14,8 @@ public class Ruta {
     private Boolean circular;
     private Float dificultat;
     private String urlGpx;
-    //private Foto fotoRuta;
-    //private List<Punt> puntsRuta = new ArrayList<>();
+    private Categoria cat;
+    private Foto fotoRuta;
 
     public Integer getId() {
         return id;
@@ -37,6 +37,17 @@ public class Ruta {
             throw new RunAppException("El titol es oblilgatori");
         }
         this.titol = titol;
+    }
+
+    public Categoria getCat() {
+        return cat;
+    }
+
+    public void setCat(Categoria cat) {
+        if(cat == null){
+            throw new RunAppException("Ruta obligatoria");
+        }
+        this.cat = cat;
     }
 
     public String getDescMarkDown() {
@@ -134,7 +145,7 @@ public class Ruta {
     public void setUrlGpx(String urlGpx) {
         this.urlGpx = urlGpx;
     }
-/*
+
     public Foto getFotoRuta() {
         return fotoRuta;
     }
@@ -146,33 +157,36 @@ public class Ruta {
         this.fotoRuta = fotoRuta;
     }
 
-    public List<Punt> getPuntsRuta() {
-        return puntsRuta;
+
+    public Ruta(Integer id, String titol, String descMarkDown, Float desnivell, Float alcadaMax, Float alcadaMin, Float distanciaKm, Boolean circular, Float dificultat, String urlGpx, Categoria cat, Foto fotoRuta) {
+        this.id = id;
+        this.titol = titol;
+        this.descMarkDown = descMarkDown;
+        this.desnivell = desnivell;
+        this.alcadaMax = alcadaMax;
+        this.alcadaMin = alcadaMin;
+        this.distanciaKm = distanciaKm;
+        this.circular = circular;
+        this.dificultat = dificultat;
+        this.urlGpx = urlGpx;
+        this.cat = cat;
+        this.fotoRuta = fotoRuta;
     }
 
-    public void setPuntsRuta(List<Punt> puntsRuta) {
-        if(puntsRuta == null || puntsRuta.size() == 0){
-            throw new RunAppException("Els punts de la ruta no poden ser nul i ha de tenir un punt com a minim");
-        }
-        this.puntsRuta = puntsRuta;
-    }
-*/
-
-
-    public Ruta(Integer id, String titol, String descMarkDown, Float desnivell, Float alcadaMax, Float alcadaMin, Float distanciaKm, Date temsAprox, Boolean circular, Float dificultat, String urlGpx/*, Foto fotoRuta, List<Punt> puntsRuta*/) {
-        setId(id);
-        setTitol(titol);
-        setDescMarkDown(descMarkDown);
-        setDesnivell(desnivell);
-        setAlcadaMax(alcadaMax);
-        setAlcadaMin(alcadaMin);
-        setDistanciaKm(distanciaKm);
-        setTemsAprox(temsAprox);
-        setCircular(circular);
-        setDificultat(dificultat);
-        setUrlGpx(urlGpx);
-        //setFotoRuta(fotoRuta);
-        //setPuntsRuta(puntsRuta);
+    public Ruta(Integer id, String titol, String descMarkDown, Float desnivell, Float alcadaMax, Float alcadaMin, Float distanciaKm, Date temsAprox, Boolean circular, Float dificultat, String urlGpx, Categoria cat, Foto fotoRuta) {
+        this.id = id;
+        this.titol = titol;
+        this.descMarkDown = descMarkDown;
+        this.desnivell = desnivell;
+        this.alcadaMax = alcadaMax;
+        this.alcadaMin = alcadaMin;
+        this.distanciaKm = distanciaKm;
+        this.temsAprox = temsAprox;
+        this.circular = circular;
+        this.dificultat = dificultat;
+        this.urlGpx = urlGpx;
+        this.cat = cat;
+        this.fotoRuta = fotoRuta;
     }
 
     public Ruta() {
