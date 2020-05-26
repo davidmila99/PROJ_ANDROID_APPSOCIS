@@ -1,8 +1,10 @@
 package com.example.appsocisrunapp.info.Model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
-public class Ruta {
+public class Ruta implements Serializable {
     private Integer id;
     private String titol;
     private String descMarkDown;
@@ -16,6 +18,7 @@ public class Ruta {
     private String urlGpx;
     private Categoria cat;
     private Foto fotoRuta;
+
 
     public Integer getId() {
         return id;
@@ -200,5 +203,11 @@ public class Ruta {
     public Ruta(Integer id, String titol) {
         this.id = id;
         this.titol = titol;
+    }
+
+    public Ruta(Integer id, String titol, Categoria cat) {
+        this.id = id;
+        this.titol = titol;
+        this.cat = cat;
     }
 }

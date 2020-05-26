@@ -1,8 +1,10 @@
 package com.example.appsocisrunapp.ConnecxioServer;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.appsocisrunapp.Activitys.MainActivity;
 import com.example.appsocisrunapp.info.Model.Categoria;
 import com.example.appsocisrunapp.info.Model.Foto;
 import com.example.appsocisrunapp.info.Model.Punt;
@@ -16,56 +18,18 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Connecxio {
+public class ConnecxioLlistaRutes extends AsyncTask<Void, Void, ArrayList<Ruta>> {
     private Socket sk;
     private DataOutputStream dos;
     private DataInputStream dis;
     private ObjectInputStream rebreObjecte;
-    private int id;
     final int PORT = 15000;
+    private MainActivity ma;
+    private ArrayList<Ruta> ruts = new ArrayList<>();
 
-    public Connecxio(int id) {
+    public ConnecxioLlistaRutes(MainActivity ma) {
         Log.d("SERVER","ARRIBO AQUI");
-        this.id = id;
-        //--------------------------------------------------------------------------------
-        try {
-            sk = new Socket("192.168.1.76", PORT);
-            Log.d("SERVER","ARRIBO AQUI TAMBNE");
-            //**********************************************************
-            dos = new DataOutputStream(sk.getOutputStream());
-            dis = new DataInputStream(sk.getInputStream());
-            rebreObjecte = new ObjectInputStream(sk.getInputStream());
-            //***********************************************************
-            Log.d("SERVER","ARRIBO AQUI TAMBNE I AQUI UN ALTRE COP");
-            Log.d("SERVER",id + " envía saludo");
-            //dos.writeUTF("hola");
-
-            //Rebre ruta (dos parametres)****************************************************
-            /*Ruta rutaRebuda;
-
-            Integer idRuta = null;
-            String titolRuta;
-            try {
-                idRuta = (Integer) rebreObjecte.readObject();
-                titolRuta = (String) rebreObjecte.readObject();
-                rutaRebuda = new Ruta(idRuta,titolRuta);
-                Log.d("SERVER","RUTA REBUDA ----> "+rutaRebuda.toString());
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-            //******************************************************************************
-
-            /*
-            String respuesta="";
-            respuesta = dis.readUTF();
-            Log.d("SERVER",id + " Servidor devuelve saludo: " + respuesta);*/
-
-        } catch (IOException ex) {
-            //Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
-            Log.d("SERVER","PETA"+ex.getCause()+ex.getMessage());
-            ex.printStackTrace();
-        }
-
+        this.ma = ma;
     }
 
     private void desconetcar(){
@@ -78,8 +42,8 @@ public class Connecxio {
         }
     }
 
-    public ArrayList<Ruta> getRutes(){
-        ArrayList<Ruta> ruts = new ArrayList<>();
+    public void getRutes(){
+
         Ruta aux;
         try {
             dos.writeInt(1);
@@ -92,10 +56,9 @@ public class Connecxio {
             e.printStackTrace();
         }
 
-        return ruts;
     }
 
-    public ArrayList<Punt> getPuntsDeRutes(Ruta r){
+    /*public ArrayList<Punt> getPuntsDeRutes(Ruta r){
         ArrayList<Punt> punts = new ArrayList<>();
         Punt aux;
         try {
@@ -111,9 +74,9 @@ public class Connecxio {
         }
 
         return punts;
-    }
+    }*/
 
-    private Punt rebrePunt() {
+    /*private Punt rebrePunt() {
         Punt auxP = null;
         Foto auxFoto = rebreFoto();
         try {
@@ -133,7 +96,7 @@ public class Connecxio {
             e.printStackTrace();
         }
         return auxP;
-    }
+    }*/
 
     private Ruta rebreRuta() {
         Ruta auxR = null;
@@ -186,5 +149,37 @@ public class Connecxio {
             e.printStackTrace();
         }
         return auxF;
+    }
+
+    @Override
+    protected void onPostExecute(ArrayList<Ruta> rutas) {
+        super.onPostExecute(rutas);
+        // Ha acabat la descàrrega i TENS accés a la UI
+        ma.finishDownload(rutas);
+
+    }
+
+    @Override
+    protected ArrayList<Ruta> doInBackground(Void... voids) {
+
+        //--------------------------------------------------------------------------------
+        try {
+            sk = new Socket("192.168.1.76", PORT);
+            Log.d("SERVER","ARRIBO AQUI TAMBNE");
+            //**********************************************************
+            dos = new DataOutputStream(sk.getOutputStream());
+            dis = new DataInputStream(sk.getInputStream());
+            rebreObjecte = new ObjectInputStream(sk.getInputStream());
+            //***********************************************************
+            Log.d("SERVER","ARRIBO AQUI TAMBNE I AQUI UN ALTRE COP");
+            getRutes();
+
+        } catch (IOException ex) {
+            //Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
+            Log.d("SERVER","PETA"+ex.getCause()+ex.getMessage());
+            ex.printStackTrace();
+        }
+
+        return ruts;
     }
 }
