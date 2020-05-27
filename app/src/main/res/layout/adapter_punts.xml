@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/border"
+    android:layout_margin="25dp"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/imvPuntFons"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:adjustViewBounds="true"
+        android:layout_margin="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="7dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_foreground"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0sp"
+        tools:layout_editor_absoluteY="0sp"
+        android:alpha="0.52"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/txvNomPunt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:gravity="fill_vertical"
+            android:text="Nooooooom"
+            android:textSize="25sp"
+            android:textStyle="bold|italic"
+            android:textColor="#000000"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="-16dp"/>
+
+        <TextView
+        android:id="@+id/txvLatPunt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="fill_vertical"
+        android:text="Latitud: "
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:textSize="25sp"
+        android:textStyle="bold|italic"
+        android:textColor="#000000"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-16dp"/>
+        <TextView
+            android:id="@+id/txvLonPunt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="fill_vertical"
+            android:text="Longitud: "
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textSize="25sp"
+            android:textStyle="bold|italic"
+            android:textColor="#000000"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="-16dp"/>
+        <TextView
+            android:id="@+id/txvElPunt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="fill_vertical"
+            android:text="Elevacio: "
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textSize="25sp"
+            android:textStyle="bold|italic"
+            android:textColor="#000000"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="-16dp"/>
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

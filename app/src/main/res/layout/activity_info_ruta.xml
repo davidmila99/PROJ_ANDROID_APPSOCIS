@@ -12,22 +12,89 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:scrollbars="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:gravity="top"
-            android:layout_gravity="top"
-            android:id="@+id/frgPrinc"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:scrollbars="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:gravity="top"
+                android:layout_gravity="top"
+                android:id="@+id/frgPrinc"
+                android:orientation="vertical">
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="Descripcio Ruta:"
+                android:layout_margin="15dp"></TextView>
+            <WebView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/wbView"
+                android:layout_margin="15dp"
+                ></WebView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="Desnivell:"
+                android:id="@+id/txvDesnivell"
+                android:layout_margin="15dp"></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="Alçada Maxima:"
+                android:id="@+id/txvAlcadaMaxima"
+                android:layout_margin="15dp"></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="Alçada Minima:"
+                android:id="@+id/txvAlacaMinima"
+                android:layout_margin="15dp"></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="Distancia:"
+                android:id="@+id/txvDistancia"
+                android:layout_margin="15dp"></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="Es circular?"
+                android:id="@+id/txvEsCircular"
+                android:layout_margin="15dp"></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="Llistat de punts de la Ruta:"
+                android:layout_margin="15dp"></TextView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/rcvPunts"
+                android:layout_margin="15dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+            </androidx.recyclerview.widget.RecyclerView>
+
         </LinearLayout>
-        <WebView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/wbView"
-            ></WebView>
+
+
     </ScrollView>
+
 
 
 </LinearLayout>

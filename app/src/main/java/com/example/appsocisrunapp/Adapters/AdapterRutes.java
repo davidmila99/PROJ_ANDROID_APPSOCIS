@@ -11,16 +11,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.appsocisrunapp.Activitys.ActCatRut;
 import com.example.appsocisrunapp.R;
 import com.example.appsocisrunapp.info.Model.Ruta;
-
 import java.util.ArrayList;
 
 public class AdapterRutes extends RecyclerView.Adapter<AdapterRutes.MyViewHolder>{
     private ArrayList<Ruta> rutesXmostrar = new ArrayList<>();
     private ActCatRut act;
 
+
     public AdapterRutes(ArrayList<Ruta> rutesXmostrar,ActCatRut act) {
         this.rutesXmostrar = rutesXmostrar;
         this.act = act;
+
     }
 
     @NonNull
@@ -38,6 +39,7 @@ public class AdapterRutes extends RecyclerView.Adapter<AdapterRutes.MyViewHolder
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Ruta rM = rutesXmostrar.get(position);
         holder.txvNomRuta.setText(rM.getTitol());
+
     }
 
     @Override
