@@ -137,7 +137,15 @@ public class Punt {
         this.puntFoto = puntFoto;
     }
 
-
+    public Punt(Integer numero, String nom, String desc, Double lat, Double longitud, Double elevacio, Foto puntFoto) {
+        this.numero = numero;
+        this.nom = nom;
+        this.desc = desc;
+        this.lat = lat;
+        this.longitud = longitud;
+        this.elevacio = elevacio;
+        this.puntFoto = puntFoto;
+    }
 
     public Punt() {
     }

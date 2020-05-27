@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appsocisrunapp.Activitys.ActCatRut;
 import com.example.appsocisrunapp.R;
 import com.example.appsocisrunapp.info.Model.Ruta;
 
@@ -15,9 +16,11 @@ import java.util.ArrayList;
 
 public class AdapterRutes extends RecyclerView.Adapter<AdapterRutes.MyViewHolder>{
     private ArrayList<Ruta> rutesXmostrar = new ArrayList<>();
+    private ActCatRut act;
 
-    public AdapterRutes(ArrayList<Ruta> rutesXmostrar) {
+    public AdapterRutes(ArrayList<Ruta> rutesXmostrar,ActCatRut act) {
         this.rutesXmostrar = rutesXmostrar;
+        this.act = act;
     }
 
     @NonNull
@@ -42,12 +45,18 @@ public class AdapterRutes extends RecyclerView.Adapter<AdapterRutes.MyViewHolder
         return rutesXmostrar.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView txvNomRuta;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             txvNomRuta = itemView.findViewById(R.id.txvNomRuta);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            act.rutaSeleccionada(rutesXmostrar.get(getAdapterPosition()));
         }
     }
 }

@@ -24,6 +24,7 @@ public class ConnecxioLlistaRutes extends AsyncTask<Void, Void, ArrayList<Ruta>>
     private DataInputStream dis;
     private ObjectInputStream rebreObjecte;
     final int PORT = 15000;
+    final String IP = "192.168.1.76";
     private MainActivity ma;
     private ArrayList<Ruta> ruts = new ArrayList<>();
 
@@ -58,45 +59,7 @@ public class ConnecxioLlistaRutes extends AsyncTask<Void, Void, ArrayList<Ruta>>
 
     }
 
-    /*public ArrayList<Punt> getPuntsDeRutes(Ruta r){
-        ArrayList<Punt> punts = new ArrayList<>();
-        Punt aux;
-        try {
-            dos.writeInt(2);
-            dos.writeInt(r.getId());
-            int numPunts = this.dis.readInt();
-            for(int i = 0;i<numPunts;i++){
-                aux = rebrePunt();
-                punts.add(aux);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        return punts;
-    }*/
-
-    /*private Punt rebrePunt() {
-        Punt auxP = null;
-        Foto auxFoto = rebreFoto();
-        try {
-            auxP = new Punt((Integer) rebreObjecte.readObject(),
-                    (Integer) rebreObjecte.readObject(),
-                    (String) rebreObjecte.readObject(),
-                    (String) rebreObjecte.readObject(),
-                    //(Date) rebreObjecte.readObject(),
-                    (Double) rebreObjecte.readObject(),
-                    (Double) rebreObjecte.readObject(),
-                    (Double) rebreObjecte.readObject(),
-                    auxFoto);
-
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return auxP;
-    }*/
 
     private Ruta rebreRuta() {
         Ruta auxR = null;
@@ -164,7 +127,7 @@ public class ConnecxioLlistaRutes extends AsyncTask<Void, Void, ArrayList<Ruta>>
 
         //--------------------------------------------------------------------------------
         try {
-            sk = new Socket("192.168.1.76", PORT);
+            sk = new Socket(IP, PORT);
             Log.d("SERVER","ARRIBO AQUI TAMBNE");
             //**********************************************************
             dos = new DataOutputStream(sk.getOutputStream());
@@ -179,7 +142,7 @@ public class ConnecxioLlistaRutes extends AsyncTask<Void, Void, ArrayList<Ruta>>
             Log.d("SERVER","PETA"+ex.getCause()+ex.getMessage());
             ex.printStackTrace();
         }
-
+        desconetcar();
         return ruts;
     }
 }

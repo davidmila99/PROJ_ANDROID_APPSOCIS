@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void finishDownload(ArrayList<Ruta> rutas) {
         Log.d("SERVER","LLISTA ----------------- >" + rutas.toString());
-        ActCatRut.rutsProva = rutas;
+        ActCatRut.ruts = rutas;
         Intent inte = new Intent(this,ActCatRut.class);
         startActivity(inte);
 
